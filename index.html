@@ -35,18 +35,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-<!-- =====================================================================
-     MICROSOFT CLARITY
-     Код ниже — ЗАГЛУШКА. Вставьте сюда ваш реальный код отслеживания
-     из панели Clarity (Settings → Setup → Install tracking code),
-     заменив "XXXXXXXXXX" на ваш project id.
-     ===================================================================== -->
+<!-- MICROSOFT CLARITY -->
 <script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "XXXXXXXXXX");
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xuxxdncx6f");
 </script>
 
 <style>
@@ -155,7 +150,25 @@ nav.main-nav a::after{
 }
 nav.main-nav a:hover::after{transform:scaleX(1); transform-origin:left;}
 
-.header-right{display:flex; align-items:center; gap:18px;}
+.header-right{display:flex; align-items:center; gap:16px;}
+.social-icons{display:flex; align-items:center; gap:10px; padding-right:14px; border-right:1px solid var(--line);}
+.social-icons a{
+  width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  color:var(--ink); border:1px solid var(--line); transition:background .2s ease, color .2s ease, border-color .2s ease;
+}
+.social-icons a:hover{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+.social-icons svg{width:16px; height:16px; fill:currentColor;}
+.whatsapp-btn{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  width:32px; height:32px; border-radius:50%; background:#25D366; color:#fff; flex-shrink:0;
+  transition:transform .2s ease;
+}
+.whatsapp-btn:hover{transform:scale(1.08);}
+.whatsapp-btn svg{width:17px; height:17px; fill:#fff;}
+@media (max-width:600px){
+  .social-icons{padding-right:8px; gap:6px;}
+  .social-icons a{width:28px; height:28px;}
+}
 .lang-switch{display:flex; gap:2px; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
 .lang-switch button{
   background:transparent; border:none; padding:8px 12px; font-size:0.8rem; letter-spacing:0.05em;
@@ -172,7 +185,12 @@ nav.main-nav a:hover::after{transform:scaleX(1); transform-origin:left;}
 .nav-toggle span::after{position:absolute; top:7px;}
 
 @media (max-width:880px){
-  nav.main-nav{position:fixed; inset:64px 0 0 0; background:var(--paper); transform:translateX(100%); transition:transform .3s ease; padding:32px 28px; border-top:1px solid var(--line);}
+  nav.main-nav{
+    position:fixed; inset:64px 0 0 0; z-index:60; isolation:isolate;
+    background-color:#F6F2E9; opacity:1; backdrop-filter:none; -webkit-backdrop-filter:none;
+    box-shadow:0 12px 30px -10px rgba(35,35,32,0.25);
+    transform:translateX(100%); transition:transform .3s ease; padding:32px 28px; border-top:1px solid var(--line);
+  }
   nav.main-nav.open{transform:translateX(0);}
   nav.main-nav ul{flex-direction:column; gap:22px;}
   nav.main-nav a{font-size:1.1rem;}
@@ -222,10 +240,14 @@ nav.main-nav a:hover::after{transform:scaleX(1); transform-origin:left;}
 .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:72px;}
 .about-portrait{
   aspect-ratio:3/4; background:var(--paper-deep); border:1px solid var(--line);
-  display:flex; align-items:center; justify-content:center; position:relative;
+  display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
 }
+.about-portrait img{width:100%; height:100%; object-fit:cover; object-position:top center;}
 .about-portrait .mark{width:120px; height:120px; opacity:0.85;}
-.about-portrait figcaption{position:absolute; bottom:18px; left:18px; right:18px; font-size:0.8rem; color:var(--ink-soft);}
+.about-portrait figcaption{
+  position:absolute; bottom:0; left:0; right:0; padding:36px 18px 16px; font-size:0.8rem; color:#fff;
+  background:linear-gradient(180deg, rgba(35,35,32,0) 0%, rgba(35,35,32,0.72) 100%);
+}
 .romanata-link{
   display:inline-flex; align-items:center; gap:8px; margin-top:28px; font-size:0.92rem; color:var(--red);
   text-decoration:none; border-bottom:1px solid transparent; transition:border-color .2s ease;
@@ -406,6 +428,17 @@ footer a:hover{color:var(--red);}
     </nav>
 
     <div class="header-right">
+      <div class="social-icons">
+        <a href="https://www.instagram.com/romanata_academy/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.25.06 2.1.26 2.85.55.77.3 1.42.7 2.07 1.35.65.65 1.05 1.3 1.35 2.07.29.75.49 1.6.55 2.85.06 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.06 1.25-.26 2.1-.55 2.85a5.75 5.75 0 0 1-1.35 2.07 5.75 5.75 0 0 1-2.07 1.35c-.75.29-1.6.49-2.85.55-1.25.06-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.25-.06-2.1-.26-2.85-.55a5.75 5.75 0 0 1-2.07-1.35 5.75 5.75 0 0 1-1.35-2.07c-.29-.75-.49-1.6-.55-2.85C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.06-1.25.26-2.1.55-2.85.3-.77.7-1.42 1.35-2.07A5.75 5.75 0 0 1 6.24 .88c.75-.29 1.6-.49 2.85-.55C10.34 2.2 10.74 2.2 12 2.2zm0 1.8c-3.15 0-3.52 0-4.76.07-1.02.05-1.57.22-1.94.36-.49.19-.84.42-1.2.79-.37.36-.6.71-.79 1.2-.14.37-.31.92-.36 1.94C3.02 9.4 3 9.77 3 12s0 3.52.07 4.76c.05 1.02.22 1.57.36 1.94.19.49.42.84.79 1.2.36.37.71.6 1.2.79.37.14.92.31 1.94.36 1.24.06 1.61.07 4.76.07s3.52 0 4.76-.07c1.02-.05 1.57-.22 1.94-.36.49-.19.84-.42 1.2-.79.37-.36.6-.71.79-1.2.14-.37.31-.92.36-1.94.06-1.24.07-1.61.07-4.76s0-3.52-.07-4.76c-.05-1.02-.22-1.57-.36-1.94a3.1 3.1 0 0 0-.79-1.2 3.1 3.1 0 0 0-1.2-.79c-.37-.14-.92-.31-1.94-.36C15.52 4 15.15 4 12 4zm0 3.6a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8zm0 1.8a2.6 2.6 0 1 0 0 5.2 2.6 2.6 0 0 0 0-5.2zm4.6-2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@natalyakomleva8?_r=1" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M16.5 2h-3.1v13.6c0 1.4-1.13 2.55-2.55 2.55a2.55 2.55 0 0 1-2.55-2.55c0-1.4 1.13-2.55 2.55-2.55.28 0 .55.04.8.13V9.9a5.65 5.65 0 0 0-.8-.06 5.75 5.75 0 1 0 5.75 5.75V8.9a7.6 7.6 0 0 0 4.4 1.4V7.2a4.5 4.5 0 0 1-4.5-4.5V2z"/></svg>
+        </a>
+        <a href="https://wa.me/77029037258" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.3-1.29a9.9 9.9 0 0 0 4.74 1.2h.01c5.5 0 9.96-4.46 9.96-9.96S17.55 2 12.04 2zm0 18.2h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.15.77.84-3.07-.2-.32a8.17 8.17 0 0 1-1.26-4.3c0-4.53 3.69-8.22 8.26-8.22 2.2 0 4.27.86 5.83 2.41a8.17 8.17 0 0 1 2.42 5.82c0 4.53-3.7 8.23-8.25 8.23zm4.52-6.16c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.96-.14.16-.29.18-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.04s.88 2.37 1 2.53c.12.16 1.73 2.64 4.19 3.7.58.25 1.04.4 1.4.51.59.19 1.12.16 1.54.1.47-.07 1.46-.6 1.66-1.17.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+        </a>
+      </div>
       <div class="lang-switch" role="group" aria-label="Language switch">
         <button data-lang="ru" class="active">RU</button>
         <button data-lang="en">EN</button>
@@ -431,7 +464,7 @@ footer a:hover{color:var(--red);}
       <p class="lead" data-i18n="hero.lead">Наталья Комлева — переводчик-японовед, сертифицированный преподаватель Japan Foundation, стажировалась в городе Урава. Помогаю говорить свободно и сдать JLPT уверенно.</p>
       <div class="hero-cta">
         <a href="#contact" class="btn btn-primary" data-i18n="hero.ctaPrimary">Записаться на пробный урок</a>
-        <a href="#videos" class="btn btn-ghost" data-i18n="hero.ctaSecondary">Смотреть видео</a>
+        <a href="https://www.romanata.kz" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="hero.ctaSecondary">Посетить мою школу</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><b>25</b><span data-i18n="hero.stat1">лет преподавания</span></div>
@@ -458,10 +491,7 @@ footer a:hover{color:var(--red);}
 <section class="section" id="about">
   <div class="wrap about-grid">
     <figure class="about-portrait reveal">
-      <svg class="mark" viewBox="0 0 120 120" aria-hidden="true">
-        <circle cx="60" cy="60" r="58" fill="none" stroke="#AE3B2C" stroke-width="2"/>
-        <text x="60" y="76" text-anchor="middle" font-family="Shippori Mincho, serif" font-size="46" fill="#232320">日</text>
-      </svg>
+      <img src="natasha.png" alt="Наталья Комлева, преподаватель японского языка" loading="lazy">
       <figcaption data-i18n="about.portraitCaption">Наталья Комлева, преподаватель японского языка</figcaption>
     </figure>
 
@@ -654,7 +684,7 @@ const translations = {
       eyebrow:"Индивидуальная подготовка к JLPT",
       title:"Японский язык — через призму 25&nbsp;лет опыта",
       lead:"Наталья Комлева — переводчик-японовед, сертифицированный преподаватель Japan Foundation, стажировалась в городе Урава. Помогаю говорить свободно и сдать JLPT уверенно.",
-      ctaPrimary:"Записаться на пробный урок", ctaSecondary:"Смотреть видео",
+      ctaPrimary:"Записаться на пробный урок", ctaSecondary:"Посетить мою школу",
       stat1:"лет преподавания", stat2:"собственный уровень JLPT", stat3:"школы и институты",
       videoLabel:"Знакомство с преподавателем",
       videoCaption:"Короткое видео о том, как проходят занятия и с чего начать подготовку к JLPT."
@@ -690,7 +720,7 @@ const translations = {
     contact:{
       eyebrow:"Контакты", title:"Начнём заниматься",
       lead:"Оставьте заявку — отвечаю в течение дня и подберу удобный формат занятий.",
-      emailLabel:"Почта", cityLabel:"Город", cityValue:"Алматы, Казахстан (очно и онлайн)", schoolLabel:"Школа",
+      emailLabel:"Почта", cityLabel:"Адрес", cityValue:"г. Алматы, ул. Абая 115А", schoolLabel:"Школа",
       formName:"Имя", formEmail:"Email", formMessage:"Сообщение",
       formMessagePlaceholder:"Расскажите о цели изучения языка и удобном времени",
       formSubmit:"Отправить заявку",
@@ -716,7 +746,7 @@ const translations = {
       eyebrow:"Personalized JLPT Coaching",
       title:"Japanese, shaped by 25&nbsp;years of experience",
       lead:"Natalia Komleva is a journalist-translator and Japan Foundation-certified teacher who trained in Urawa, Japan. Speak with confidence and pass the JLPT.",
-      ctaPrimary:"Book a Trial Lesson", ctaSecondary:"Watch Videos",
+      ctaPrimary:"Book a Trial Lesson", ctaSecondary:"Visit My School",
       stat1:"years teaching", stat2:"own JLPT level", stat3:"schools & institutes",
       videoLabel:"Meet your teacher",
       videoCaption:"A short video on how lessons work and how to start preparing for the JLPT."
@@ -752,7 +782,7 @@ const translations = {
     contact:{
       eyebrow:"Contact", title:"Let's Get Started",
       lead:"Send a request — I reply within a day and will help you choose the right format.",
-      emailLabel:"Email", cityLabel:"City", cityValue:"Almaty, Kazakhstan (in-person and online)", schoolLabel:"School",
+      emailLabel:"Email", cityLabel:"Address", cityValue:"115A Abai St, Almaty, Kazakhstan", schoolLabel:"School",
       formName:"Name", formEmail:"Email", formMessage:"Message",
       formMessagePlaceholder:"Tell me about your goals and preferred schedule",
       formSubmit:"Send Request",
@@ -778,7 +808,7 @@ const translations = {
       eyebrow:"JLPT個人指導",
       title:"25年の経験が導く日本語",
       lead:"ナタリア・コムレワは国際ジャーナリスト・翻訳者であり、国際交流基金認定講師です。浦和での研修経験を活かし、自信を持ってJLPT合格へ導きます。",
-      ctaPrimary:"無料体験レッスンを予約", ctaSecondary:"動画を見る",
+      ctaPrimary:"無料体験レッスンを予約", ctaSecondary:"私の学校を見る",
       stat1:"年の指導経験", stat2:"自身のJLPTレベル", stat3:"勤務校・機関数",
       videoLabel:"講師紹介",
       videoCaption:"レッスンの進め方とJLPT対策の始め方を紹介する短い動画です。"
@@ -814,7 +844,7 @@ const translations = {
     contact:{
       eyebrow:"お問い合わせ", title:"レッスンを始めましょう",
       lead:"お問い合わせフォームをお送りください。1日以内にご返信し、最適な形式をご提案します。",
-      emailLabel:"メール", cityLabel:"所在地", cityValue:"アルマトイ、カザフスタン（対面・オンライン）", schoolLabel:"スクール",
+      emailLabel:"メール", cityLabel:"住所", cityValue:"カザフスタン、アルマトイ市 アバイ通り115A", schoolLabel:"スクール",
       formName:"お名前", formEmail:"メールアドレス", formMessage:"メッセージ",
       formMessagePlaceholder:"学習目的やご希望の時間帯をお知らせください",
       formSubmit:"送信する",
@@ -848,7 +878,7 @@ const priceData = [
     featured:false,
     title:{ru:"Индивидуальный урок",en:"Private Lesson",ja:"個人レッスン"},
     format:{ru:"1 занятие · 60 минут",en:"1 lesson · 60 minutes",ja:"1回 · 60分"},
-    amount:"8 000 ₸",
+    amount:"7 000 ₸",
     note:{ru:"очно или онлайн",en:"in-person or online",ja:"対面またはオンライン"},
     features:{
       ru:["Программа под вашу цель","Разбор ошибок и домашнее задание","Гибкое расписание"],
@@ -858,10 +888,10 @@ const priceData = [
   },
   {
     featured:true,
-    title:{ru:"Пакет 10 занятий",en:"10-Lesson Package",ja:"10回パッケージ"},
-    format:{ru:"10 × 60 минут",en:"10 × 60 minutes",ja:"10回 × 60分"},
-    amount:"70 000 ₸",
-    note:{ru:"экономия 10 000 ₸",en:"save 10,000 ₸",ja:"10,000₸お得"},
+    title:{ru:"Пакет 8 занятий",en:"8-Lesson Package",ja:"8回パッケージ"},
+    format:{ru:"8 × 60 минут",en:"8 × 60 minutes",ja:"8回 × 60分"},
+    amount:"50 000 ₸",
+    note:{ru:"экономия 6 000 ₸",en:"save 6,000 ₸",ja:"6,000₸お得"},
     features:{
       ru:["Системная подготовка к JLPT","Материалы и тесты включены","Приоритетная запись"],
       en:["Structured JLPT preparation","Materials & practice tests included","Priority booking"],
@@ -911,10 +941,10 @@ const blogData = [
 ];
 
 const videoData = [
-  { id:"VIDEO_ID_1", title:{ru:"N5: с чего начать",en:"N5: Where to start",ja:"N5：何から始めるか"}, desc:{ru:"База для начинающих: азбуки, первые 100 слов и структура урока.",en:"Foundations for beginners: kana, first 100 words and lesson structure.",ja:"初心者向けの基礎：かな、最初の100語、レッスンの進め方。"} },
-  { id:"VIDEO_ID_2", title:{ru:"Грамматика N4 за 10 минут",en:"N4 grammar in 10 minutes",ja:"10分でわかるN4文法"}, desc:{ru:"Ключевые конструкции уровня N4 с примерами и разбором ошибок.",en:"Key N4-level constructions with examples and common mistakes.",ja:"例文と間違いやすいポイントで学ぶN4の重要文法。"} },
-  { id:"VIDEO_ID_3", title:{ru:"Как сдать раздел «Аудирование»",en:"How to pass the Listening section",ja:"聴解パートの攻略法"}, desc:{ru:"Стратегии работы со звуком: что слушать в первую очередь.",en:"Listening strategies: what to focus on first during the exam.",ja:"試験でまず何に注意して聞くべきかを解説。"} },
-  { id:"VIDEO_ID_4", title:{ru:"Кэйго для начинающих",en:"Keigo for beginners",ja:"初心者のための敬語"}, desc:{ru:"Простое объяснение вежливой речи на понятных примерах.",en:"A simple explanation of polite speech through clear examples.",ja:"わかりやすい例文で学ぶ敬語入門。"} }
+  { id:"xv8PV8YIvi0", title:{ru:"N5: с чего начать",en:"N5: Where to start",ja:"N5：何から始めるか"}, desc:{ru:"База для начинающих: азбуки, первые 100 слов и структура урока.",en:"Foundations for beginners: kana, first 100 words and lesson structure.",ja:"初心者向けの基礎：かな、最初の100語、レッスンの進め方。"} },
+  { id:"JNf4-awkPa8", title:{ru:"Грамматика N4 за 10 минут",en:"N4 grammar in 10 minutes",ja:"10分でわかるN4文法"}, desc:{ru:"Ключевые конструкции уровня N4 с примерами и разбором ошибок.",en:"Key N4-level constructions with examples and common mistakes.",ja:"例文と間違いやすいポイントで学ぶN4の重要文法。"} },
+  { id:"ZguiauaI0sA", title:{ru:"Как сдать раздел «Аудирование»",en:"How to pass the Listening section",ja:"聴解パートの攻略法"}, desc:{ru:"Стратегии работы со звуком: что слушать в первую очередь.",en:"Listening strategies: what to focus on first during the exam.",ja:"試験でまず何に注意して聞くべきかを解説。"} },
+  { id:"JNf4-awkPa8", title:{ru:"Кэйго для начинающих",en:"Keigo for beginners",ja:"初心者のための敬語"}, desc:{ru:"Простое объяснение вежливой речи на понятных примерах.",en:"A simple explanation of polite speech through clear examples.",ja:"わかりやすい例文で学ぶ敬語入門。"} }
 ];
 
 const checklistData = [
@@ -1085,10 +1115,10 @@ function playVideo(box, youtubeId){
 }
 
 document.getElementById("heroVideoPoster").addEventListener("click", ()=>{
-  playVideo(document.getElementById("heroVideoBox"), "VIDEO_ID_HERO");
+  playVideo(document.getElementById("heroVideoBox"), "JNf4-awkPa8");
 });
 document.getElementById("heroVideoPoster").addEventListener("keypress", e=>{
-  if(e.key === "Enter") playVideo(document.getElementById("heroVideoBox"), "VIDEO_ID_HERO");
+  if(e.key === "Enter") playVideo(document.getElementById("heroVideoBox"), "JNf4-awkPa8");
 });
 
 function attachVideoPlayers(){
