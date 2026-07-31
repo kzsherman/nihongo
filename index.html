@@ -127,8 +127,11 @@ p{margin:0 0 1em;}
    ============================================================ */
 header{
   position:sticky; top:0; z-index:50;
-  background:rgba(246,242,233,0.92); backdrop-filter:blur(8px);
   border-bottom:1px solid var(--line);
+}
+header::before{
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:rgba(246,242,233,0.92); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
 }
 .header-inner{display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
 .logo{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink);}
@@ -177,7 +180,7 @@ nav.main-nav a:hover::after{transform:scaleX(1); transform-origin:left;}
 .lang-switch button.active{background:var(--ink); color:var(--paper);}
 .lang-switch button:hover:not(.active){background:var(--line-soft);}
 
-.nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+.nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px; order:-1; margin-right:4px;}
 .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{
   content:""; display:block; width:22px; height:1px; background:var(--ink); position:relative; transition:.25s;
 }
@@ -188,8 +191,8 @@ nav.main-nav a:hover::after{transform:scaleX(1); transform-origin:left;}
   nav.main-nav{
     position:fixed; inset:64px 0 0 0; z-index:60; isolation:isolate;
     background-color:#F6F2E9; opacity:1; backdrop-filter:none; -webkit-backdrop-filter:none;
-    box-shadow:0 12px 30px -10px rgba(35,35,32,0.25);
-    transform:translateX(100%); transition:transform .3s ease; padding:32px 28px; border-top:1px solid var(--line);
+    box-shadow:12px 0 30px -10px rgba(35,35,32,0.25);
+    transform:translateX(-100%); transition:transform .3s ease; padding:32px 28px; border-top:1px solid var(--line);
   }
   nav.main-nav.open{transform:translateX(0);}
   nav.main-nav ul{flex-direction:column; gap:22px;}
@@ -411,6 +414,8 @@ footer a:hover{color:var(--red);}
      ============================================================ -->
 <header>
   <div class="wrap header-inner">
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+
     <a href="#top" class="logo">
       <span class="hanko">学</span>
       <span class="logo-text">Наталья Комлева<span class="sub" data-i18n="header.logoSub">Японский язык · JLPT</span></span>
@@ -444,10 +449,10 @@ footer a:hover{color:var(--red);}
         <button data-lang="en">EN</button>
         <button data-lang="ja">JA</button>
       </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
 </header>
+
 
 <!-- ============================================================
      HERO
